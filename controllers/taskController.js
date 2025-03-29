@@ -31,4 +31,18 @@ const createTask = async (req, res) => {
   }
 };
 
-module.exports = { getAllTasks, getTaskById, createTask };
+const updateTask = async (req, res) => {
+  try {
+    const updatedTask = await Task.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+    });
+    if (!updatedTask) {
+      return res.status(404).json({ message: "Tâche non trouvée" });
+    }
+    res.json(updatedTask);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+};
+
+module.exports = { getAllTasks, getTaskById, createTask, updateTask };
