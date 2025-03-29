@@ -21,4 +21,14 @@ const getTaskById = async (req, res) => {
   }
 };
 
-module.exports = { getAllTasks, getTaskById };
+const createTask = async (req, res) => {
+  try {
+    const newTask = new Task(req.body);
+    await newTask.save();
+    res.status(201).json(newTask);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+};
+
+module.exports = { getAllTasks, getTaskById, createTask };
