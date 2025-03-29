@@ -1,98 +1,86 @@
-[{
-  "_id": {
-    "$oid": "67e872a0c0f7212f3ee2fce2"
-  },
-  "titre": "Mise en place de l'API",
-  "description": "Créer l'API de gestion des tâches",
-  "auteur": {
-    "nom": "Dupont",
-    "prenom": "Jean",
-    "email": "jean.dupont@example.com"
-  },
-  "statut": "en cours",
-  "priorite": "haute",
-  "categorie": "Développement",
-  "etiquettes": [
-    "API",
-    "Node.js",
-    "MongoDB"
-  ],
-  "sousTaches": [
-    {
-      "titre": "Créer les routes",
-      "statut": "terminée"
+[
+  {
+    "_id": {
+      "$oid": "67e872a0c0f7212f3ee2fce2"
     },
-    {
-      "titre": "Implémenter les contrôleurs",
-      "statut": "en cours"
-    }
-  ],
-  "commentaires": [
-    {
-      "auteur": {
-        "nom": "Martin",
-        "prenom": "Sophie",
-        "email": "sophie.martin@example.com"
+    "titre": "Mise en place de l'API",
+    "description": "Créer l'API de gestion des tâches",
+    "auteur": {
+      "nom": "Dupont",
+      "prenom": "Jean",
+      "email": "jean.dupont@example.com"
+    },
+    "statut": "en cours",
+    "priorite": "haute",
+    "categorie": "Développement",
+    "etiquettes": ["API", "Node.js", "MongoDB"],
+    "sousTaches": [
+      {
+        "titre": "Créer les routes",
+        "statut": "terminée"
       },
-      "contenu": "Pensez à ajouter la pagination"
-    }
-  ]
-},
-{
-  "_id": {
-    "$oid": "67e872a0c0f7212f3ee2fce3"
+      {
+        "titre": "Implémenter les contrôleurs",
+        "statut": "en cours"
+      }
+    ],
+    "commentaires": [
+      {
+        "auteur": {
+          "nom": "Martin",
+          "prenom": "Sophie",
+          "email": "sophie.martin@example.com"
+        },
+        "contenu": "Pensez à ajouter la pagination"
+      }
+    ]
   },
-  "titre": "Documentation technique",
-  "description": "Rédiger la documentation de l'API",
-  "auteur": {
-    "nom": "Martin",
-    "prenom": "Sophie",
-    "email": "sophie.martin@example.com"
+  {
+    "_id": {
+      "$oid": "67e872a0c0f7212f3ee2fce3"
+    },
+    "titre": "Documentation technique",
+    "description": "Rédiger la documentation de l'API",
+    "auteur": {
+      "nom": "Martin",
+      "prenom": "Sophie",
+      "email": "sophie.martin@example.com"
+    },
+    "statut": "à faire",
+    "priorite": "moyenne",
+    "categorie": "Documentation",
+    "etiquettes": ["Swagger", "Markdown"]
   },
-  "statut": "à faire",
-  "priorite": "moyenne",
-  "categorie": "Documentation",
-  "etiquettes": [
-    "Swagger",
-    "Markdown"
-  ]
-},
-{
-  "_id": {
-    "$oid": "67e872a0c0f7212f3ee2fce4"
+  {
+    "_id": {
+      "$oid": "67e872a0c0f7212f3ee2fce4"
+    },
+    "titre": "Tests unitaires",
+    "description": "Écrire les tests unitaires pour l'API",
+    "auteur": {
+      "nom": "Durand",
+      "prenom": "Pierre",
+      "email": "pierre.durand@example.com"
+    },
+    "statut": "à faire",
+    "priorite": "haute",
+    "categorie": "Tests",
+    "etiquettes": ["Jest", "Mocha"]
   },
-  "titre": "Tests unitaires",
-  "description": "Écrire les tests unitaires pour l'API",
-  "auteur": {
-    "nom": "Durand",
-    "prenom": "Pierre",
-    "email": "pierre.durand@example.com"
-  },
-  "statut": "à faire",
-  "priorite": "haute",
-  "categorie": "Tests",
-  "etiquettes": [
-    "Jest",
-    "Mocha"
-  ]
-},
-{
-  "_id": {
-    "$oid": "67e872a0c0f7212f3ee2fce5"
-  },
-  "titre": "Déploiement",
-  "description": "Déployer l'API en production",
-  "auteur": {
-    "nom": "Leroy",
-    "prenom": "Marie",
-    "email": "marie.leroy@example.com"
-  },
-  "statut": "à faire",
-  "priorite": "critique",
-  "categorie": "DevOps",
-  "etiquettes": [
-    "Docker",
-    "Kubernetes",
-    "AWS"
-  ]
-}]
+  {
+    "_id": {
+      "$oid": "67e872a0c0f7212f3ee2fce5"
+    },
+    "titre": "Déploiement",
+    "description": "Déployer l'API en production",
+    "auteur": {
+      "nom": "Leroy",
+      "prenom": "Marie",
+      "email": "marie.leroy@example.com"
+    },
+    "statut": "à faire",
+    "priorite": "critique",
+    "categorie": "DevOps",
+    "etiquettes": ["Docker", "Kubernetes", "AWS"]
+  }
+]
