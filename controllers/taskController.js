@@ -12,9 +12,6 @@ const getAllTasks = async (req, res) => {
 const getTaskById = async (req, res) => {
   try {
     const task = await Task.findById(req.params.id);
-    if (!task) {
-      return res.status(404).json({ message: "Tâche non trouvée" });
-    }
     res.json(task);
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -45,4 +42,19 @@ const updateTask = async (req, res) => {
   }
 };
 
-module.exports = { getAllTasks, getTaskById, createTask, updateTask };
+const deleteTask = async (req, res) => {
+  try {
+    const deletedTask = await Task.deleteOne({ _id: req.params.id });
+    res.json({ message: "Tâche supprimée avec succès", deletedTask });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+module.exports = {
+  getAllTasks,
+  getTaskById,
+  createTask,
+  updateTask,
+  deleteTask,
+};
