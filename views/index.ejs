@@ -5,11 +5,16 @@
 
     <div class="content-container my-5">
         <h1 class="title">Dashboard</h1>
-
+        
         <% tasks.forEach(task => { %>
             <%- include('partials/task', { task }) %>
         <% }); %>
 
+        <a href="/tasks/new" class="button is-primary is-large my-5">
+            <span class="subtitle" style="font-size: 1.5rem; color: black;">
+                Ajouter une nouvelle tâche
+            </span>
+        </a>
     </div>
 </div>
 

@@ -1,0 +1,25 @@
+<!-- Actions sur la tâche : boutons modifier et supprimer -->
+<div class="level mt-5" style="justify-content: space-between;">
+    <form action="/tasks/edit" method="POST" style="display: inline;">
+        <input type="hidden" name="taskId" value="<%= task._id %>">
+        <button type="submit" class="button is-warning">
+            <span class="icon-text">
+                <span class="icon">
+                    <span class="has-text-weight-bold">✎</span>
+                </span>
+                <span>Modifier</span>
+            </span>
+        </button>
+    </form>
+    <form action="/tasks/delete" method="POST" style="display: inline;">
+        <input type="hidden" name="taskId" value="<%= task._id %>">
+        <button type="submit" class="button is-danger">
+            <span class="icon-text">
+                <span class="icon">
+                    <span class="has-text-weight-bold">🗑</span>
+                </span>
+                <span>Supprimer</span>
+            </span>
+        </button>
+    </form>
+</div> 
