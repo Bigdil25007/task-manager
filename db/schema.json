@@ -1,7 +1,7 @@
 {
   "$jsonSchema": {
     "bsonType": "object",
-    "required": ["titre", "description", "auteur"],
+    "required": ["titre", "description", "auteur", "echeance", "priorite", "dateCreation"],
     "properties": {
       "titre": {
         "bsonType": "string"
@@ -51,6 +51,7 @@
         "bsonType": "array",
         "items": {
           "bsonType": "object",
+          "required": ["titre", "statut", "echeance"],
           "properties": {
             "titre": {
               "bsonType": "string"
@@ -69,6 +70,7 @@
         "bsonType": "array",
         "items": {
           "bsonType": "object",
+          "required": ["auteur", "date", "contenu"],
           "properties": {
             "auteur": {
               "bsonType": "object",
@@ -97,6 +99,7 @@
         "bsonType": "array",
         "items": {
           "bsonType": "object",
+          "required": ["champModifie", "ancienneValeur", "nouvelleValeur", "date"],
           "properties": {
             "champModifie": {
               "bsonType": "string"

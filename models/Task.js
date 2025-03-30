@@ -29,7 +29,7 @@ const taskSchema = new mongoose.Schema({
   titre: { type: String, required: true },
   description: { type: String, required: true },
   dateCreation: { type: Date, default: Date.now },
-  echeance: Date,
+  echeance: { type: Date, required: true },
   statut: {
     type: String,
     enum: ["à faire", "en cours", "terminée", "annulée"],
@@ -38,6 +38,7 @@ const taskSchema = new mongoose.Schema({
   priorite: {
     type: String,
     enum: ["basse", "moyenne", "haute", "critique"],
+    required: true,
   },
   auteur: { type: auteurSchema, required: true },
   categorie: String,

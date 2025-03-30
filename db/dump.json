@@ -1,86 +1,266 @@
-[
-  {
+[{
+  "_id": {
+    "$oid": "67e898ae136393cbb600db72"
+  },
+  "titre": "Refonte du site web",
+  "description": "Revoir le design et l'ergonomie du site pour améliorer l'expérience utilisateur.",
+  "dateCreation": {
+    "$date": "2025-03-01T10:00:00.000Z"
+  },
+  "echeance": {
+    "$date": "2025-05-01T00:00:00.000Z"
+  },
+  "statut": "en cours",
+  "priorite": "haute",
+  "auteur": {
+    "nom": "Dupont",
+    "prenom": "Pierre",
+    "email": "pierre.dupont@email.com",
     "_id": {
-      "$oid": "67e872a0c0f7212f3ee2fce2"
-    },
-    "titre": "Mise en place de l'API",
-    "description": "Créer l'API de gestion des tâches",
-    "auteur": {
-      "nom": "Dupont",
-      "prenom": "Jean",
-      "email": "jean.dupont@example.com"
-    },
-    "statut": "en cours",
-    "priorite": "haute",
-    "categorie": "Développement",
-    "etiquettes": ["API", "Node.js", "MongoDB"],
-    "sousTaches": [
-      {
-        "titre": "Créer les routes",
-        "statut": "terminée"
+      "$oid": "67e898ae136393cbb600db73"
+    }
+  },
+  "categorie": "Design",
+  "etiquettes": [
+    "site web",
+    "ergonomie",
+    "design"
+  ],
+  "sousTaches": [
+    {
+      "titre": "Créer maquettes",
+      "statut": "terminée",
+      "echeance": {
+        "$date": "2025-03-10T00:00:00.000Z"
       },
-      {
-        "titre": "Implémenter les contrôleurs",
-        "statut": "en cours"
+      "_id": {
+        "$oid": "67e898ae136393cbb600db74"
       }
-    ],
-    "commentaires": [
-      {
-        "auteur": {
-          "nom": "Martin",
-          "prenom": "Sophie",
-          "email": "sophie.martin@example.com"
-        },
-        "contenu": "Pensez à ajouter la pagination"
+    },
+    {
+      "titre": "Implémenter nouvelle charte graphique",
+      "statut": "en cours",
+      "echeance": {
+        "$date": "2025-04-01T00:00:00.000Z"
+      },
+      "_id": {
+        "$oid": "67e898ae136393cbb600db75"
       }
-    ]
+    }
+  ],
+  "commentaires": [
+    {
+      "auteur": {
+        "nom": "Martin",
+        "prenom": "Claire",
+        "email": "claire.martin@email.com",
+        "_id": {
+          "$oid": "67e898ae136393cbb600db77"
+        }
+      },
+      "date": {
+        "$date": "2025-03-05T14:00:00.000Z"
+      },
+      "contenu": "La maquette pour la page d'accueil est validée.",
+      "_id": {
+        "$oid": "67e898ae136393cbb600db76"
+      }
+    }
+  ],
+  "historiqueModification": [
+    {
+      "champModifie": "statut",
+      "ancienneValeur": "à faire",
+      "nouvelleValeur": "en cours",
+      "date": {
+        "$date": "2025-03-01T12:00:00.000Z"
+      },
+      "_id": {
+        "$oid": "67e898ae136393cbb600db78"
+      }
+    }
+  ],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67e898ae136393cbb600db79"
   },
-  {
-    "_id": {
-      "$oid": "67e872a0c0f7212f3ee2fce3"
-    },
-    "titre": "Documentation technique",
-    "description": "Rédiger la documentation de l'API",
-    "auteur": {
-      "nom": "Martin",
-      "prenom": "Sophie",
-      "email": "sophie.martin@example.com"
-    },
-    "statut": "à faire",
-    "priorite": "moyenne",
-    "categorie": "Documentation",
-    "etiquettes": ["Swagger", "Markdown"]
+  "titre": "Développement de la nouvelle API",
+  "description": "Créer une API REST pour gérer les utilisateurs et les sessions.",
+  "dateCreation": {
+    "$date": "2025-03-10T09:00:00.000Z"
   },
-  {
-    "_id": {
-      "$oid": "67e872a0c0f7212f3ee2fce4"
-    },
-    "titre": "Tests unitaires",
-    "description": "Écrire les tests unitaires pour l'API",
-    "auteur": {
-      "nom": "Durand",
-      "prenom": "Pierre",
-      "email": "pierre.durand@example.com"
-    },
-    "statut": "à faire",
-    "priorite": "haute",
-    "categorie": "Tests",
-    "etiquettes": ["Jest", "Mocha"]
+  "echeance": {
+    "$date": "2025-06-01T00:00:00.000Z"
   },
-  {
+  "statut": "à faire",
+  "priorite": "critique",
+  "auteur": {
+    "nom": "Leblanc",
+    "prenom": "Sophie",
+    "email": "sophie.leblanc@email.com",
     "_id": {
-      "$oid": "67e872a0c0f7212f3ee2fce5"
+      "$oid": "67e898ae136393cbb600db7a"
+    }
+  },
+  "categorie": "Développement",
+  "etiquettes": [
+    "API",
+    "REST",
+    "utilisateurs"
+  ],
+  "sousTaches": [
+    {
+      "titre": "Définir endpoints",
+      "statut": "à faire",
+      "echeance": {
+        "$date": "2025-03-15T00:00:00.000Z"
+      },
+      "_id": {
+        "$oid": "67e898ae136393cbb600db7b"
+      }
+    }
+  ],
+  "commentaires": [],
+  "historiqueModification": [],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67e898ae136393cbb600db7c"
+  },
+  "titre": "Création d'un module de paiement",
+  "description": "Intégrer un système de paiement en ligne sécurisé.",
+  "dateCreation": {
+    "$date": "2025-03-15T11:00:00.000Z"
+  },
+  "echeance": {
+    "$date": "2025-04-30T00:00:00.000Z"
+  },
+  "statut": "en cours",
+  "priorite": "moyenne",
+  "auteur": {
+    "nom": "Perrin",
+    "prenom": "Julien",
+    "email": "julien.perrin@email.com",
+    "_id": {
+      "$oid": "67e898ae136393cbb600db7d"
+    }
+  },
+  "categorie": "Intégration",
+  "etiquettes": [
+    "paiement",
+    "sécurisé",
+    "module"
+  ],
+  "sousTaches": [
+    {
+      "titre": "Configurer système de paiement",
+      "statut": "en cours",
+      "echeance": {
+        "$date": "2025-04-01T00:00:00.000Z"
+      },
+      "_id": {
+        "$oid": "67e898ae136393cbb600db7e"
+      }
     },
-    "titre": "Déploiement",
-    "description": "Déployer l'API en production",
-    "auteur": {
-      "nom": "Leroy",
-      "prenom": "Marie",
-      "email": "marie.leroy@example.com"
+    {
+      "titre": "Tester intégration avec serveur",
+      "statut": "à faire",
+      "echeance": {
+        "$date": "2025-04-10T00:00:00.000Z"
+      },
+      "_id": {
+        "$oid": "67e898ae136393cbb600db7f"
+      }
+    }
+  ],
+  "commentaires": [
+    {
+      "auteur": {
+        "nom": "Benoit",
+        "prenom": "Lucas",
+        "email": "lucas.benoit@email.com",
+        "_id": {
+          "$oid": "67e898ae136393cbb600db81"
+        }
+      },
+      "date": {
+        "$date": "2025-03-20T15:30:00.000Z"
+      },
+      "contenu": "Le test de paiement a échoué, il faut vérifier la configuration.",
+      "_id": {
+        "$oid": "67e898ae136393cbb600db80"
+      }
+    }
+  ],
+  "historiqueModification": [
+    {
+      "champModifie": "statut",
+      "ancienneValeur": "à faire",
+      "nouvelleValeur": "en cours",
+      "date": {
+        "$date": "2025-03-15T12:00:00.000Z"
+      },
+      "_id": {
+        "$oid": "67e898ae136393cbb600db82"
+      }
+    }
+  ],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67e898ae136393cbb600db83"
+  },
+  "titre": "Rédaction du manuel utilisateur",
+  "description": "Rédiger le manuel utilisateur pour le logiciel de gestion des projets.",
+  "dateCreation": {
+    "$date": "2025-03-20T08:30:00.000Z"
+  },
+  "echeance": {
+    "$date": "2025-04-15T00:00:00.000Z"
+  },
+  "statut": "à faire",
+  "priorite": "basse",
+  "auteur": {
+    "nom": "Dubois",
+    "prenom": "Emma",
+    "email": "emma.dubois@email.com",
+    "_id": {
+      "$oid": "67e898ae136393cbb600db84"
+    }
+  },
+  "categorie": "Documentation",
+  "etiquettes": [
+    "manuel",
+    "utilisateur",
+    "documentation"
+  ],
+  "sousTaches": [
+    {
+      "titre": "Écrire chapitre 1",
+      "statut": "à faire",
+      "echeance": {
+        "$date": "2025-03-25T00:00:00.000Z"
+      },
+      "_id": {
+        "$oid": "67e898ae136393cbb600db85"
+      }
     },
-    "statut": "à faire",
-    "priorite": "critique",
-    "categorie": "DevOps",
-    "etiquettes": ["Docker", "Kubernetes", "AWS"]
-  }
-]
+    {
+      "titre": "Écrire chapitre 2",
+      "statut": "à faire",
+      "echeance": {
+        "$date": "2025-03-30T00:00:00.000Z"
+      },
+      "_id": {
+        "$oid": "67e898ae136393cbb600db86"
+      }
+    }
+  ],
+  "commentaires": [],
+  "historiqueModification": [],
+  "__v": 0
+}]
