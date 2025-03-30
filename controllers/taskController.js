@@ -16,7 +16,7 @@ const getAllTasks = async (req, res) => {
     let tasks;
 
     // Si on trie par priorité, on gère manuellement le tri
-    if (sort?.prioriteOrder) {
+    if (sort?.priorite) {
       tasks = await Task.find(query);
       tasks = sortByPriorite(tasks, sort);
     } else {
@@ -68,7 +68,7 @@ const updateTask = async (req, res) => {
     if (req.body.commentaires) {
       task.commentaires = sortSubDocuments(
         task.commentaires,
-        req.body.commentaires,
+        req.body.commentaires
       );
     }
 

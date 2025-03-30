@@ -98,26 +98,26 @@ const buildSort = (queryParams) => {
 /**
  * Obtient l'ordre de priorité pour une tâche
  * @param {string} priorite - La priorité de la tâche (basse, moyenne, haute, critique)
- * @returns {number} L'ordre de priorité (4 pour critique, 3 pour haute, 2 pour moyenne, 1 pour basse)
+ * @returns {number} L'ordre de priorité (1 pour critique, 2 pour haute, 3 pour moyenne, 4 pour basse)
  */
 const getPrioriteOrder = (priorite) => {
   const ordrePriorite = {
-    critique: 4,
-    haute: 3,
-    moyenne: 2,
-    basse: 1,
+    critique: 1,
+    haute: 2,
+    moyenne: 3,
+    basse: 4,
   };
-  return ordrePriorite[priorite] || 0;
+  return ordrePriorite[priorite] || 5; // Les tâches sans priorité seront en dernier
 };
 
 /**
  * Trie les tâches par priorité selon l'ordre spécifié
  * @param {Array} tasks - Les tâches à trier provenant de la base de données
  * @param {Object} sort - L'objet de tri contenant la direction du tri
- * @param {number} sort.prioriteOrder - Direction du tri (-1 pour descendant, 1 pour ascendant)
+ * @param {number} sort.priorite - Direction du tri (-1 pour descendant, 1 pour ascendant)
  * @returns {Array} Les tâches triées par ordre de priorité:
- *   - En ordre ascendant: basse -> moyenne -> haute -> critique
- *   - En ordre descendant: critique -> haute -> moyenne -> basse
+ *   - En ordre ascendant: critique -> haute -> moyenne -> basse
+ *   - En ordre descendant: basse -> moyenne -> haute -> critique
  *   Les tâches sans priorité définie sont placées à la fin du tri
  */
 const sortByPriorite = (tasks, sort) => {
@@ -130,7 +130,7 @@ const sortByPriorite = (tasks, sort) => {
   // Tri des résultats
   return tasksWithOrder.sort((a, b) => {
     return (
-      (sort.prioriteOrder === -1 ? -1 : 1) * (a.prioriteOrder - b.prioriteOrder)
+      (sort.priorite === -1 ? -1 : 1) * (a.prioriteOrder - b.prioriteOrder)
     );
   });
 };
