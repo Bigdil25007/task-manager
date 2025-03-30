@@ -21,7 +21,7 @@ const sortSubDocuments = (existingDocs, newDocs) => {
   for (const existingDoc of existingDocs) {
     // On cherche s'il y a une mise à jour pour ce document
     const updateDoc = newDocs.find(
-      (doc) => doc._id === existingDoc._id.toString()
+      (doc) => doc._id === existingDoc._id.toString(),
     );
 
     if (updateDoc) {

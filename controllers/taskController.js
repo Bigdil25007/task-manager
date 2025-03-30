@@ -68,7 +68,7 @@ const updateTask = async (req, res) => {
     if (req.body.commentaires) {
       task.commentaires = sortSubDocuments(
         task.commentaires,
-        req.body.commentaires
+        req.body.commentaires,
       );
     }
 
