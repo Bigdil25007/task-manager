@@ -5,6 +5,10 @@ const {
   buildSort,
   sortByPriorite,
 } = require("../utils/filterTasks");
+const {
+  generateHistorique,
+  generateHistoriqueTableau,
+} = require("../utils/historiqueUtils");
 
 const getAllTasks = async (req, res) => {
   try {
@@ -53,34 +57,86 @@ const updateTask = async (req, res) => {
   try {
     const task = await Task.findById(req.params.id);
 
+    // Sauvegarde de l'ancien document pour la comparaison
+    const ancienDoc = task.toObject();
+    const historique = [];
+
     // Mise à jour des champs simples
     const updateData = { ...req.body };
     delete updateData.sousTaches;
     delete updateData.commentaires;
     delete updateData.etiquettes;
+    delete updateData.historiqueModification;
 
     // Mise à jour des sous-tâches
     if (req.body.sousTaches) {
+      const anciennesSousTaches = [...task.sousTaches];
       task.sousTaches = sortSubDocuments(task.sousTaches, req.body.sousTaches);
+      historique.push(
+        ...generateHistoriqueTableau(
+          anciennesSousTaches,
+          task.sousTaches,
+          "sousTaches"
+        )
+      );
     }
 
     // Mise à jour des commentaires
     if (req.body.commentaires) {
+      const anciensCommentaires = [...task.commentaires];
       task.commentaires = sortSubDocuments(
         task.commentaires,
         req.body.commentaires
+      );
+      historique.push(
+        ...generateHistoriqueTableau(
+          anciensCommentaires,
+          task.commentaires,
+          "commentaires"
+        )
       );
     }
 
     // Mise à jour des étiquettes
     if (req.body.etiquettes) {
+      const anciennesEtiquettes = [...task.etiquettes];
       task.etiquettes = req.body.etiquettes;
+      if (
+        JSON.stringify(anciennesEtiquettes) !== JSON.stringify(task.etiquettes)
+      ) {
+        historique.push({
+          champModifie: "etiquettes",
+          ancienneValeur: anciennesEtiquettes.join(", "),
+          nouvelleValeur: task.etiquettes.join(", "),
+          date: new Date(),
+        });
+      }
     }
 
     // Mise à jour des autres champs
     Object.assign(task, updateData);
-    await task.save();
 
+    // Génération de l'historique des modifications des champs simples
+    const champsASuivre = [
+      "titre",
+      "description",
+      "statut",
+      "priorite",
+      "categorie",
+      "echeance",
+    ];
+
+    historique.push(...generateHistorique(ancienDoc, task, champsASuivre));
+
+    // Ajout des nouvelles modifications à l'historique existant
+    if (historique.length > 0) {
+      task.historiqueModification = [
+        ...(task.historiqueModification || []),
+        ...historique,
+      ];
+    }
+
+    await task.save();
     res.json(task);
   } catch (error) {
     res.status(400).json({ message: error.message });
