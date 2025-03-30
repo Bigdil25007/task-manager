@@ -56,7 +56,8 @@
               "bsonType": "string"
             },
             "statut": {
-              "bsonType": "string"
+              "bsonType": "string",
+              "enum": ["à faire", "en cours", "terminée", "annulée"]
             },
             "echeance": {
               "bsonType": "date"
