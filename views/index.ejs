@@ -1,7 +1,16 @@
 <%- include('partials/header') %>
 
-<div class="container">
-    <h1>Dashboard</h1>
+<div class="main-container">
+    <%- include('partials/nav') %>
+
+    <div class="content-container my-5">
+        <h1 class="title">Dashboard</h1>
+
+        <% tasks.forEach(task => { %>
+            <%- include('partials/task', { task }) %>
+        <% }); %>
+
+    </div>
 </div>
 
 <%- include('partials/footer') %>
