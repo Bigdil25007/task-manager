@@ -1,4 +1,5 @@
 const Task = require("../models/Task");
+const { sortSubDocuments } = require("../utils/sortSubDocuments");
 
 const getAllTasks = async (req, res) => {
   try {
@@ -30,13 +31,37 @@ const createTask = async (req, res) => {
 
 const updateTask = async (req, res) => {
   try {
-    const updatedTask = await Task.findByIdAndUpdate(req.params.id, req.body, {
-      new: true,
-    });
-    if (!updatedTask) {
-      return res.status(404).json({ message: "Tâche non trouvée" });
+    const task = await Task.findById(req.params.id);
+
+    // Mise à jour des champs simples
+    const updateData = { ...req.body };
+    delete updateData.sousTaches;
+    delete updateData.commentaires;
+    delete updateData.etiquettes;
+
+    // Mise à jour des sous-tâches
+    if (req.body.sousTaches) {
+      task.sousTaches = sortSubDocuments(task.sousTaches, req.body.sousTaches);
     }
-    res.json(updatedTask);
+
+    // Mise à jour des commentaires
+    if (req.body.commentaires) {
+      task.commentaires = sortSubDocuments(
+        task.commentaires,
+        req.body.commentaires
+      );
+    }
+
+    // Mise à jour des étiquettes
+    if (req.body.etiquettes) {
+      task.etiquettes = req.body.etiquettes;
+    }
+
+    // Mise à jour des autres champs
+    Object.assign(task, updateData);
+    await task.save();
+
+    res.json(task);
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
@@ -44,7 +69,10 @@ const updateTask = async (req, res) => {
 
 const deleteTask = async (req, res) => {
   try {
-    const deletedTask = await Task.deleteOne({ _id: req.params.id });
+    const deletedTask = await Task.findByIdAndDelete(req.params.id);
+    if (!deletedTask) {
+      return res.status(404).json({ message: "Tâche non trouvée" });
+    }
     res.json({ message: "Tâche supprimée avec succès", deletedTask });
   } catch (error) {
     res.status(500).json({ message: error.message });
