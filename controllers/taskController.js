@@ -1,9 +1,29 @@
 const Task = require("../models/Task");
 const { sortSubDocuments } = require("../utils/sortSubDocuments");
+const {
+  buildFilter,
+  buildSort,
+  sortByPriorite,
+} = require("../utils/filterTasks");
 
 const getAllTasks = async (req, res) => {
   try {
-    const tasks = await Task.find();
+    // Construction de la requête de filtrage
+    const query = buildFilter(req.query);
+    // Construction du tri
+    const sort = buildSort(req.query);
+
+    let tasks;
+
+    // Si on trie par priorité, on gère manuellement le tri
+    if (sort?.prioriteOrder) {
+      tasks = await Task.find(query);
+      tasks = sortByPriorite(tasks, sort);
+    } else {
+      // Sinon on utilise la méthode de tri de MongoDB
+      tasks = await Task.find(query).sort(sort);
+    }
+
     res.json(tasks);
   } catch (error) {
     res.status(500).json({ message: error.message });
