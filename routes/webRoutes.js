@@ -17,9 +17,14 @@ router.use((req, res, next) => {
 
 // Routes
 router.get("/", webController.getDashboard);
-router.post("/tasks/edit", webController.getEditConfirmation);
-router.post("/tasks/delete", webController.getDeleteConfirmation);
+
+router.get("/tasks/new", webController.getAddForm);
+router.post("/tasks/new/confirm", webController.confirmAdd);
+
+router.post("/tasks/edit", webController.getEditForm);
 router.post("/tasks/edit/confirm", webController.confirmEdit);
+
+router.post("/tasks/delete", webController.getDeleteConfirmation);
 router.post("/tasks/delete/confirm", webController.confirmDelete);
 
 module.exports = router;

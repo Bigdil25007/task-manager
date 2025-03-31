@@ -5,15 +5,10 @@ const getDashboard = async (req, res) => {
   try {
     const response = await apiClient.get("/tasks");
     res.locals.tasks = response.data;
-    res.render("index", {
-      tasks: res.locals.tasks,
-      formatDate: res.locals.formatDate,
-      getStatusColor: res.locals.getStatusColor,
-      getPriorityColor: res.locals.getPriorityColor,
-    });
   } catch (error) {
     console.error("Erreur lors de la récupération des tâches:", error);
     res.locals.tasks = [];
+  } finally {
     res.render("index", {
       tasks: res.locals.tasks,
       formatDate: res.locals.formatDate,
@@ -23,26 +18,56 @@ const getDashboard = async (req, res) => {
   }
 };
 
-// Page de confirmation pour la modification
-const getEditConfirmation = async (req, res) => {
+// Page de formulaire pour l'ajout d'une tâche
+const getAddForm = (req, res) => {
+  res.render("task-form", {
+    isEdit: false,
+    task: null,
+  });
+};
+
+// Page de formulaire pour la modification d'une tâche
+const getEditForm = async (req, res) => {
   try {
     const { taskId } = req.body;
     const response = await apiClient.get(`/tasks/${taskId}`);
     const task = response.data;
 
-    res.render("confirm", {
-      title: "Modifier la tâche",
-      message: `Êtes-vous sûr de vouloir modifier la tâche "${task.titre}" ?`,
-      action: "/tasks/edit/confirm",
-      taskId: taskId,
-      confirmButtonClass: "is-warning",
-      confirmIcon: "✎",
-      confirmText: "Modifier",
+    res.render("task-form", {
+      isEdit: true,
+      task: task,
     });
   } catch (error) {
     console.error("Erreur lors de la récupération de la tâche:", error);
     res.render("error", {
       error: "Impossible de récupérer les informations de la tâche",
+    });
+  }
+};
+
+// Confirmation de l'ajout d'une tâche
+const confirmAdd = async (req, res) => {
+  try {
+    await apiClient.post("/tasks", req.body);
+    res.redirect("/");
+  } catch (error) {
+    console.error("Erreur lors de l'ajout de la tâche:", error);
+    res.render("error", {
+      error: "Une erreur est survenue lors de l'ajout de la tâche",
+    });
+  }
+};
+
+// Confirmation de la modification d'une tâche
+const confirmEdit = async (req, res) => {
+  try {
+    const taskId = req.body.taskId;
+    await apiClient.put(`/tasks/${taskId}`, req.body);
+    res.redirect("/");
+  } catch (error) {
+    console.error("Erreur lors de la modification de la tâche:", error);
+    res.render("error", {
+      error: "Une erreur est survenue lors de la modification de la tâche",
     });
   }
 };
@@ -71,20 +96,6 @@ const getDeleteConfirmation = async (req, res) => {
   }
 };
 
-// Confirmation de la modification
-const confirmEdit = async (req, res) => {
-  try {
-    const taskId = req.body.taskId;
-    await apiClient.put(`/tasks/${taskId}`, req.body);
-    res.redirect("/");
-  } catch (error) {
-    console.error("Erreur lors de la modification de la tâche:", error);
-    res.render("error", {
-      error: "Une erreur est survenue lors de la modification de la tâche",
-    });
-  }
-};
-
 // Confirmation de la suppression
 const confirmDelete = async (req, res) => {
   try {
@@ -101,8 +112,10 @@ const confirmDelete = async (req, res) => {
 
 module.exports = {
   getDashboard,
-  getEditConfirmation,
-  getDeleteConfirmation,
+  getAddForm,
+  getEditForm,
+  confirmAdd,
   confirmEdit,
+  getDeleteConfirmation,
   confirmDelete,
 };
