@@ -1,0 +1,89 @@
+<script>
+    let sousTacheCount = <%= task?.sousTaches?.length || 0 %>;
+    let commentaireCount = <%= task?.commentaires?.length || 0 %>;
+
+    function addSousTache() {
+        const container = document.getElementById('sous-taches-container');
+        const sousTache = document.createElement('div');
+        sousTache.className = 'box sous-tache mb-2';
+        sousTache.innerHTML = `
+            <div class="level is-mobile">
+                <div class="level-left">
+                    <input type="text" class="input" 
+                           name="sousTaches[${sousTacheCount}][titre]" 
+                           placeholder="Titre de la sous-tâche">
+                </div>
+                <div class="level-right">
+                    <div class="select">
+                        <select name="sousTaches[${sousTacheCount}][statut]">
+                            <option value="à faire">À faire</option>
+                            <option value="en cours">En cours</option>
+                            <option value="terminée">Terminée</option>
+                        </select>
+                    </div>
+                    <button type="button" class="button is-danger is-small ml-2" onclick="removeSousTache(this)">
+                        <span class="icon">
+                            <span class="has-text-weight-bold">✕</span>
+                        </span>
+                    </button>
+                </div>
+            </div>
+            <div class="field mt-2">
+                <label class="label is-small">Date d'échéance</label>
+                <div class="control">
+                    <input class="input" type="date" 
+                           name="sousTaches[${sousTacheCount}][echeance]">
+                </div>
+            </div>
+        `;
+        container.appendChild(sousTache);
+        sousTacheCount++;
+    }
+
+    function removeSousTache(button) {
+        button.closest('.sous-tache').remove();
+    }
+
+    function addCommentaire() {
+        const container = document.getElementById('commentaires-container');
+        const commentaire = document.createElement('div');
+        commentaire.className = 'box commentaire mb-2';
+        commentaire.innerHTML = `
+            <div class="level is-mobile">
+                <div class="level-left">
+                    <textarea class="textarea" 
+                              name="commentaires[${commentaireCount}][contenu]" 
+                              rows="2" 
+                              placeholder="Votre commentaire"></textarea>
+                </div>
+                <div class="level-right">
+                    <button type="button" class="button is-danger is-small ml-2" onclick="removeCommentaire(this)">
+                        <span class="icon">
+                            <span class="has-text-weight-bold">✕</span>
+                        </span>
+                    </button>
+                </div>
+            </div>
+            <div class="field mt-2">
+                <label class="label is-small">Auteur du commentaire</label>
+                <div class="control">
+                    <input class="input mb-2" type="text" 
+                           name="commentaires[${commentaireCount}][auteur.nom]" 
+                           placeholder="Nom">
+                    <input class="input mb-2" type="text" 
+                           name="commentaires[${commentaireCount}][auteur.prenom]" 
+                           placeholder="Prénom">
+                    <input class="input" type="email" 
+                           name="commentaires[${commentaireCount}][auteur.email]" 
+                           placeholder="Email">
+                </div>
+            </div>
+        `;
+        container.appendChild(commentaire);
+        commentaireCount++;
+    }
+
+    function removeCommentaire(button) {
+        button.closest('.commentaire').remove();
+    }
+</script> 

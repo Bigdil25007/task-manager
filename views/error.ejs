@@ -1,0 +1,27 @@
+<%- include('partials/header') %>
+
+<div class="main-container">
+
+    <div class="content-container my-5">
+        <div class="box">
+            <h1 class="title has-text-centered has-text-danger">Erreur</h1>
+            
+            <div class="content has-text-centered">
+                <p class="mb-4"><%= error %></p>
+                
+                <div class="buttons is-centered">
+                    <a href="/" class="button is-primary">
+                        <span class="icon-text">
+                            <span class="icon">
+                                <span class="has-text-weight-bold">←</span>
+                            </span>
+                            <span>Retour à l'accueil</span>
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('partials/footer') %>

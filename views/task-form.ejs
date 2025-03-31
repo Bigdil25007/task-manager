@@ -1,0 +1,26 @@
+<%- include('partials/header') %>
+
+<div class="main-container">
+    <div class="content-container my-5">
+        <div class="box">
+            <h1 class="title has-text-centered"><%= isEdit ? 'Modifier la tâche' : 'Nouvelle tâche' %></h1>
+            
+            <form action="<%= isEdit ? '/tasks/edit/confirm' : '/tasks/new/confirm' %>" method="POST">
+                <% if (isEdit) { %>
+                    <input type="hidden" name="taskId" value="<%= task._id %>">
+                <% } %>
+                
+                <%- include('partials/form/basic-info') %>
+                <%- include('partials/form/categorization') %>
+                <%- include('partials/form/status') %>
+                <%- include('partials/form/due-date') %>
+                <%- include('partials/form/subtasks') %>
+                <%- include('partials/form/comments') %>
+                <%- include('partials/form/buttons') %>
+            </form>
+        </div>
+    </div>
+</div>
+
+<%- include('partials/form/scripts') %>
+<%- include('partials/footer') %> 

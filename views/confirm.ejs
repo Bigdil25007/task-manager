@@ -1,0 +1,39 @@
+<%- include('partials/header') %>
+
+<div class="main-container">
+
+    <div class="content-container my-5">
+        <div class="box">
+            <h1 class="title has-text-centered"><%= title %></h1>
+            
+            <div class="content has-text-centered">
+                <p class="mb-4"><%= message %></p>
+                
+                <div class="buttons is-centered">
+                    <form action="<%= action %>" method="POST" style="display: inline;">
+                        <input type="hidden" name="taskId" value="<%= taskId %>">
+                        <button type="submit" class="button <%= confirmButtonClass %>">
+                            <span class="icon-text">
+                                <span class="icon">
+                                    <span class="has-text-weight-bold"><%= confirmIcon %></span>
+                                </span>
+                                <span><%= confirmText %></span>
+                            </span>
+                        </button>
+                    </form>
+                    
+                    <a href="/" class="button is-light">
+                        <span class="icon-text">
+                            <span class="icon">
+                                <span class="has-text-weight-bold">✕</span>
+                            </span>
+                            <span>Annuler</span>
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('partials/footer') %> 

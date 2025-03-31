@@ -1,0 +1,45 @@
+<!-- Historique des modifications -->
+<div class="mt-5">
+    <div class="dropdown is-hoverable is-fullwidth">
+        <div class="dropdown-trigger">
+            <button class="button is-light is-fullwidth" aria-haspopup="true" aria-controls="dropdown-menu-<%= task._id %>">
+                <span class="icon-text">
+                    <span class="icon">
+                        <span class="has-text-weight-bold">📋</span>
+                    </span>
+                    <span>Historique des modifications</span>
+                </span>
+            </button>
+        </div>
+        <div class="dropdown-menu" id="dropdown-menu-<%= task._id %>" role="menu">
+            <div class="dropdown-content">
+                <% if (task.historiqueModification && task.historiqueModification.length > 0) { %>
+                    <% task.historiqueModification.forEach((modification, index) => { %>
+                        <div class="dropdown-item">
+                            <div class="level is-mobile">
+                                <div class="level-left">
+                                    <div>
+                                        <p class="has-text-weight-bold"><%= modification.champModifie %></p>
+                                        <p class="is-size-7">
+                                            De: <%= modification.ancienneValeur %> → À: <%= modification.nouvelleValeur %>
+                                        </p>
+                                        <p class="is-size-7 has-text-grey">
+                                            <%= formatDate(modification.date) %>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <% if (index < task.historiqueModification.length - 1) { %>
+                            <hr class="dropdown-divider">
+                        <% } %>
+                    <% }); %>
+                <% } else { %>
+                    <div class="dropdown-item">
+                        <p>Aucune modification enregistrée</p>
+                    </div>
+                <% } %>
+            </div>
+        </div>
+    </div>
+</div> 

@@ -1,0 +1,29 @@
+<!-- En-tête de la tâche : titre, priorité et statut -->
+<div class="level">
+    <div class="level-left">
+        <h4 class="title is-4"><%= task.titre %></h4>
+    </div>
+    <div class="level-right">
+        <span class="tag is-<%= getPriorityColor(task.priorite) %>"><%= task.priorite %></span>
+        <span class="tag is-<%= getStatusColor(task.statut) %> ml-2"><%= task.statut %></span>
+    </div>
+</div>
+
+<!-- Description de la tâche -->
+<p class="mb-3"><%= task.description %></p>
+
+<!-- Informations temporelles : date de création et échéance -->
+<div class="field is-grouped is-grouped-multiline">
+    <div class="control">
+        <div class="tags has-addons">
+            <span class="tag is-dark">Créée le</span>
+            <span class="tag is-info"><%= formatDate(task.dateCreation) %></span>
+        </div>
+    </div>
+    <div class="control">
+        <div class="tags has-addons">
+            <span class="tag is-dark">Échéance</span>
+            <span class="tag is-warning"><%= formatDate(task.echeance) %></span>
+        </div>
+    </div>
+</div> 
