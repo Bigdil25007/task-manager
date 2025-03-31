@@ -1,0 +1,52 @@
+<!-- Sous-tâches -->
+<div class="field">
+    <label class="label">Sous-tâches</label>
+    <div class="control">
+        <div id="sous-taches-container">
+            <% if (task?.sousTaches && task.sousTaches.length > 0) { %>
+                <% task.sousTaches.forEach((sousTache, index) => { %>
+                    <div class="box sous-tache mb-2">
+                        <div class="level is-mobile">
+                            <div class="level-left">
+                                <input type="text" class="input" 
+                                       name="sousTaches[<%= index %>][titre]" 
+                                       value="<%= sousTache.titre %>" 
+                                       placeholder="Titre de la sous-tâche">
+                            </div>
+                            <div class="level-right">
+                                <div class="select">
+                                    <select name="sousTaches[<%= index %>][statut]">
+                                        <option value="à faire" <%= sousTache.statut === 'à faire' ? 'selected' : '' %>>À faire</option>
+                                        <option value="en cours" <%= sousTache.statut === 'en cours' ? 'selected' : '' %>>En cours</option>
+                                        <option value="terminée" <%= sousTache.statut === 'terminée' ? 'selected' : '' %>>Terminée</option>
+                                    </select>
+                                </div>
+                                <button type="button" class="button is-danger is-small ml-2" onclick="removeSousTache(this)">
+                                    <span class="icon">
+                                        <span class="has-text-weight-bold">✕</span>
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="field mt-2">
+                            <label class="label is-small">Date d'échéance</label>
+                            <div class="control">
+                                <input class="input" type="date" 
+                                       name="sousTaches[<%= index %>][echeance]" 
+                                       value="<%= sousTache.echeance ? (typeof sousTache.echeance === 'string' ? sousTache.echeance.split('T')[0] : new Date(sousTache.echeance).toISOString().split('T')[0]) : '' %>">
+                            </div>
+                        </div>
+                    </div>
+                <% }); %>
+            <% } %>
+        </div>
+        <button type="button" class="button is-info is-small mt-2" onclick="addSousTache()">
+            <span class="icon-text">
+                <span class="icon">
+                    <span class="has-text-weight-bold">+</span>
+                </span>
+                <span>Ajouter une sous-tâche</span>
+            </span>
+        </button>
+    </div>
+</div> 

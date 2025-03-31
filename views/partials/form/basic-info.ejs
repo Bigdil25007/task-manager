@@ -1,0 +1,24 @@
+<!-- Informations de base -->
+<div class="field">
+    <label class="label">Titre</label>
+    <div class="control">
+        <input class="input" type="text" name="titre" value="<%= task?.titre || '' %>" required>
+    </div>
+</div>
+
+<div class="field">
+    <label class="label">Description</label>
+    <div class="control">
+        <textarea class="textarea" name="description" rows="3"><%= task?.description || '' %></textarea>
+    </div>
+</div>
+
+<div class="field">
+    <label class="label">Auteur</label>
+    <div class="control">
+        <input class="input mb-2" type="text" name="auteur.nom" value="<%= task?.auteur?.nom || '' %>" placeholder="Nom" required>
+        <input class="input mb-2" type="text" name="auteur.prenom" value="<%= task?.auteur?.prenom || '' %>" placeholder="Prénom" required>
+        <input class="input" type="email" name="auteur.email" value="<%= task?.auteur?.email || '' %>" placeholder="Email" required>
+        <p class="help">Informations de la personne responsable de la tâche</p>
+    </div>
+</div> 

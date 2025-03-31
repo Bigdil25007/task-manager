@@ -1,0 +1,53 @@
+<!-- Commentaires -->
+<div class="field">
+    <label class="label">Commentaires</label>
+    <div class="control">
+        <div id="commentaires-container">
+            <% if (task?.commentaires && task.commentaires.length > 0) { %>
+                <% task.commentaires.forEach((commentaire, index) => { %>
+                    <div class="box commentaire mb-2">
+                        <div class="level is-mobile">
+                            <div class="level-left">
+                                <textarea class="textarea" 
+                                          name="commentaires[<%= index %>][contenu]" 
+                                          rows="2"><%= commentaire.contenu %></textarea>
+                            </div>
+                            <div class="level-right">
+                                <button type="button" class="button is-danger is-small ml-2" onclick="removeCommentaire(this)">
+                                    <span class="icon">
+                                        <span class="has-text-weight-bold">✕</span>
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="field mt-2">
+                            <label class="label is-small">Auteur du commentaire</label>
+                            <div class="control">
+                                <input class="input mb-2" type="text" 
+                                       name="commentaires[<%= index %>][auteur.nom]" 
+                                       value="<%= commentaire.auteur?.nom || task?.auteur?.nom || '' %>" 
+                                       placeholder="Nom">
+                                <input class="input mb-2" type="text" 
+                                       name="commentaires[<%= index %>][auteur.prenom]" 
+                                       value="<%= commentaire.auteur?.prenom || task?.auteur?.prenom || '' %>" 
+                                       placeholder="Prénom">
+                                <input class="input" type="email" 
+                                       name="commentaires[<%= index %>][auteur.email]" 
+                                       value="<%= commentaire.auteur?.email || task?.auteur?.email || '' %>" 
+                                       placeholder="Email">
+                            </div>
+                        </div>
+                    </div>
+                <% }); %>
+            <% } %>
+        </div>
+        <button type="button" class="button is-info is-small mt-2" onclick="addCommentaire()">
+            <span class="icon-text">
+                <span class="icon">
+                    <span class="has-text-weight-bold">+</span>
+                </span>
+                <span>Ajouter un commentaire</span>
+            </span>
+        </button>
+    </div>
+</div> 

@@ -1,0 +1,27 @@
+<!-- Informations de statut -->
+<div class="field">
+    <label class="label">Priorité</label>
+    <div class="control">
+        <div class="select is-fullwidth">
+            <select name="priorite" required>
+                <option value="basse" <%= task?.priorite === 'basse' ? 'selected' : '' %>>Basse</option>
+                <option value="moyenne" <%= task?.priorite === 'moyenne' ? 'selected' : '' %>>Moyenne</option>
+                <option value="haute" <%= task?.priorite === 'haute' ? 'selected' : '' %>>Haute</option>
+                <option value="critique" <%= task?.priorite === 'critique' ? 'selected' : '' %>>Critique</option>
+            </select>
+        </div>
+    </div>
+</div>
+
+<div class="field">
+    <label class="label">Statut</label>
+    <div class="control">
+        <div class="select is-fullwidth">
+            <select name="statut" required>
+                <option value="à faire" <%= task?.statut === 'à faire' ? 'selected' : '' %>>À faire</option>
+                <option value="en cours" <%= task?.statut === 'en cours' ? 'selected' : '' %>>En cours</option>
+                <option value="terminée" <%= task?.statut === 'terminée' ? 'selected' : '' %>>Terminée</option>
+            </select>
+        </div>
+    </div>
+</div> 

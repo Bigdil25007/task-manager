@@ -1,0 +1,24 @@
+<!-- Informations de catégorisation -->
+<div class="field">
+    <label class="label">Catégorie</label>
+    <div class="control">
+        <div class="select is-fullwidth">
+            <select name="categorie" required>
+                <option value="travail" <%= task?.categorie === 'travail' ? 'selected' : '' %>>Travail</option>
+                <option value="personnel" <%= task?.categorie === 'personnel' ? 'selected' : '' %>>Personnel</option>
+                <option value="projet" <%= task?.categorie === 'projet' ? 'selected' : '' %>>Projet</option>
+                <option value="autre" <%= task?.categorie === 'autre' ? 'selected' : '' %>>Autre</option>
+            </select>
+        </div>
+    </div>
+</div>
+
+<div class="field">
+    <label class="label">Étiquettes</label>
+    <div class="control">
+        <input class="input" type="text" name="etiquettes" 
+               value="<%= task?.etiquettes ? task.etiquettes.join(', ') : '' %>"
+               placeholder="Séparées par des virgules">
+        <p class="help">Exemple: urgent, important, réunion</p>
+    </div>
+</div> 

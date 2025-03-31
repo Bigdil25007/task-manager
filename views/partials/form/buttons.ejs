@@ -1,0 +1,23 @@
+<!-- Boutons -->
+<div class="field is-grouped is-grouped-centered mt-5">
+    <div class="control">
+        <button type="submit" class="button <%= isEdit ? 'is-warning' : 'is-success' %>">
+            <span class="icon-text">
+                <span class="icon">
+                    <span class="has-text-weight-bold"><%= isEdit ? '✎' : '+' %></span>
+                </span>
+                <span><%= isEdit ? 'Modifier' : 'Ajouter' %></span>
+            </span>
+        </button>
+    </div>
+    <div class="control">
+        <a href="/" class="button is-danger">
+            <span class="icon-text">
+                <span class="icon">
+                    <span class="has-text-weight-bold">✕</span>
+                </span>
+                <span>Annuler</span>
+            </span>
+        </a>
+    </div>
+</div> 
